@@ -4,8 +4,9 @@ import com.fullcycle.admin.catalogo.domain.AggregateRoot;
 import com.fullcycle.admin.catalogo.domain.validation.ValidationHandler;
 
 import java.time.Instant;
+import java.util.Objects;
 
-public class Category extends AggregateRoot<CategoryID> {
+public class Category extends AggregateRoot<CategoryID> implements Cloneable {
 
     private String name;
     private String description;
@@ -27,8 +28,8 @@ public class Category extends AggregateRoot<CategoryID> {
         this.name = aName;
         this.description = aDescription;
         this.active = isActive;
-        this.createdAt = aCreatedAt;
-        this.updatedAt = anUpdatedAt;
+        this.createdAt = Objects.requireNonNull(aCreatedAt, "createdAt should not be null");
+        this.updatedAt = Objects.requireNonNull(anUpdatedAt, "updatedAt should not be null");
         this.deletedAt = aDeletedAt;
     }
 
@@ -41,6 +42,29 @@ public class Category extends AggregateRoot<CategoryID> {
         final var now = Instant.now();
         final var deletedAt = isActive ? null : now;
         return new Category(id, aName, aDescription, isActive, now, now, deletedAt);
+    }
+
+    public static Category with(final Category aCategory) {
+        return with(
+                aCategory.id(),
+                aCategory.name(),
+                aCategory.description(),
+                aCategory.active(),
+                aCategory.createdAt(),
+                aCategory.updatedAt(),
+                aCategory.deletedAt()
+        );
+    }
+
+    public static Category with(
+            final CategoryID anId,
+            final String aName,
+            final String aDescription,
+            final boolean isActive,
+            final Instant aCreatedAt,
+            final Instant anUpdatedAt,
+            final Instant aDeletedAt) {
+        return new Category(anId, aName, aDescription, isActive, aCreatedAt, anUpdatedAt, aDeletedAt);
     }
 
     @Override
@@ -106,5 +130,14 @@ public class Category extends AggregateRoot<CategoryID> {
 
     public Instant deletedAt() {
         return deletedAt;
+    }
+
+    @Override
+    public Category clone() {
+        try {
+            return (Category) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }
