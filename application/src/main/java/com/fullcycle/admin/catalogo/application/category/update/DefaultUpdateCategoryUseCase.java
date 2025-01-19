@@ -34,7 +34,7 @@ public class DefaultUpdateCategoryUseCase extends UpdateCategoryUseCase {
         aCategory.update(aName, aDescription, isActive)
                 .validate(aNotification);
 
-        return aNotification.hasErrors() ?
+        return aNotification.hasError() ?
                 API.Left(aNotification) : this.update(aCategory);
     }
 

@@ -31,7 +31,7 @@ class DeleteCategoryUseCaseIT {
     void givenAValidId_whenCallsDeleteCategory_thenShouldBeOk() {
         // Given
         final var aCategory = Category.newCategory("Filmes", "A categoria mais assistida", true);
-        final var expectedId = aCategory.id();
+        final var expectedId = aCategory.getId();
 
         this.save(aCategory);
 

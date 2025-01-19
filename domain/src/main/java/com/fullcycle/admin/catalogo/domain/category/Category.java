@@ -46,7 +46,7 @@ public class Category extends AggregateRoot<CategoryID> implements Cloneable {
 
     public static Category with(final Category aCategory) {
         return with(
-                aCategory.id(),
+                aCategory.getId(),
                 aCategory.name(),
                 aCategory.description(),
                 aCategory.active(),
@@ -104,7 +104,7 @@ public class Category extends AggregateRoot<CategoryID> implements Cloneable {
     }
 
     @Override
-    public CategoryID id() {
+    public CategoryID getId() {
         return id;
     }
 

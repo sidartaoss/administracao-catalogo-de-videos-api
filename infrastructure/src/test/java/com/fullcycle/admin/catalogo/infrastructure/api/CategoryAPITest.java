@@ -175,7 +175,7 @@ class CategoryAPITest {
         final var expectedDescription = "A categoria mais assistida";
         final var expectedIsActive = true;
         final var aCategory = Category.newCategory(expectedName, expectedDescription, expectedIsActive);
-        final var expectedId = aCategory.id().getValue();
+        final var expectedId = aCategory.getId().getValue();
 
         when(this.getCategoryByIdUseCase.execute(any()))
                 .thenReturn(CategoryOutput.from(aCategory));
@@ -413,7 +413,7 @@ class CategoryAPITest {
                 .andExpect(jsonPath("$.per_page", equalTo(expectedPerPage)))
                 .andExpect(jsonPath("$.total", equalTo(expectedTotal)))
                 .andExpect(jsonPath("$.items", hasSize(expectedItemsCount)))
-                .andExpect(jsonPath("$.items[0].id", equalTo(aCategory.id().getValue())))
+                .andExpect(jsonPath("$.items[0].id", equalTo(aCategory.getId().getValue())))
                 .andExpect(jsonPath("$.items[0].name", equalTo(aCategory.name())))
                 .andExpect(jsonPath("$.items[0].description", equalTo(aCategory.description())))
                 .andExpect(jsonPath("$.items[0].is_active", equalTo(aCategory.active())))

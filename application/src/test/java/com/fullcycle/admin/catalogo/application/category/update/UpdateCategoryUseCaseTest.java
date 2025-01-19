@@ -1,17 +1,15 @@
 package com.fullcycle.admin.catalogo.application.category.update;
 
+import com.fullcycle.admin.catalogo.application.UseCaseTest;
 import com.fullcycle.admin.catalogo.domain.category.Category;
 import com.fullcycle.admin.catalogo.domain.category.CategoryGateway;
 import com.fullcycle.admin.catalogo.domain.category.CategoryID;
 import com.fullcycle.admin.catalogo.domain.exceptions.DomainException;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -21,8 +19,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.*;
 
-@ExtendWith(MockitoExtension.class)
-class UpdateCategoryUseCaseTest {
+class UpdateCategoryUseCaseTest extends UseCaseTest {
 
     @InjectMocks
     private DefaultUpdateCategoryUseCase useCase;
@@ -30,9 +27,9 @@ class UpdateCategoryUseCaseTest {
     @Mock
     private CategoryGateway categoryGateway;
 
-    @BeforeEach
-    void cleanUp() {
-        Mockito.reset(categoryGateway);
+    @Override
+    protected List<Object> getMocks() {
+        return List.of(categoryGateway);
     }
 
     @Test
@@ -43,7 +40,7 @@ class UpdateCategoryUseCaseTest {
         final var expectedIsActive = true;
 
         final var aCategory = Category.newCategory("film", null, true);
-        final var expectedId = aCategory.id();
+        final var expectedId = aCategory.getId();
 
         final var aCommand = UpdateCategoryCommand.with(
                 expectedId.getValue(),
@@ -70,7 +67,7 @@ class UpdateCategoryUseCaseTest {
                 Objects.equals(expectedName, anUpdatedCategory.name()) &&
                         Objects.equals(expectedDescription, anUpdatedCategory.description()) &&
                         Objects.equals(expectedIsActive, anUpdatedCategory.active()) &&
-                        Objects.equals(expectedId, anUpdatedCategory.id()) &&
+                        Objects.equals(expectedId, anUpdatedCategory.getId()) &&
                         Objects.equals(aCategory.createdAt(), anUpdatedCategory.createdAt()) &&
                         aCategory.updatedAt().isBefore(anUpdatedCategory.updatedAt()) &&
                         Objects.isNull(anUpdatedCategory.deletedAt())
@@ -81,7 +78,7 @@ class UpdateCategoryUseCaseTest {
     void givenAnInvalidName_whenCallsUpdateCategory_thenShouldReturnDomainException() {
         // Given
         final var aCategory = Category.newCategory("film", null, true);
-        final var expectedId = aCategory.id();
+        final var expectedId = aCategory.getId();
 
         final String expectedName = null;
         final var expectedDescription = "A categoria mais assistida";
@@ -113,7 +110,7 @@ class UpdateCategoryUseCaseTest {
     void givenAValidCommandWithInactiveCategory_whenCallsUpdateCategory_thenShouldReturnInactiveCategoryId() {
         // Given
         final var aCategory = Category.newCategory("film", null, true);
-        final var expectedId = aCategory.id();
+        final var expectedId = aCategory.getId();
 
         final var expectedName = "Filmes";
         final var expectedDescription = "A categoria mais assistida";
@@ -142,7 +139,7 @@ class UpdateCategoryUseCaseTest {
                 Objects.equals(expectedName, anUpdatedCategory.name()) &&
                         Objects.equals(expectedDescription, anUpdatedCategory.description()) &&
                         Objects.equals(expectedIsActive, anUpdatedCategory.active()) &&
-                        Objects.nonNull(anUpdatedCategory.id()) &&
+                        Objects.nonNull(anUpdatedCategory.getId()) &&
                         Objects.nonNull(anUpdatedCategory.createdAt()) &&
                         Objects.nonNull(anUpdatedCategory.updatedAt()) &&
                         Objects.nonNull(anUpdatedCategory.deletedAt())
@@ -153,7 +150,7 @@ class UpdateCategoryUseCaseTest {
     void givenAValidCommand_whenGatewayThrowsRandomException_thenShouldReturnAnException() {
         // Given
         final var aCategory = Category.newCategory("film", null, true);
-        final var expectedId = aCategory.id();
+        final var expectedId = aCategory.getId();
 
         final String expectedName = "Filmes";
         final var expectedDescription = "A categoria mais assistida";
@@ -183,7 +180,7 @@ class UpdateCategoryUseCaseTest {
                 Objects.equals(expectedName, anUpdatedCategory.name()) &&
                         Objects.equals(expectedDescription, anUpdatedCategory.description()) &&
                         Objects.equals(expectedIsActive, anUpdatedCategory.active()) &&
-                        Objects.nonNull(anUpdatedCategory.id()) &&
+                        Objects.nonNull(anUpdatedCategory.getId()) &&
                         Objects.nonNull(anUpdatedCategory.createdAt()) &&
                         Objects.nonNull(anUpdatedCategory.updatedAt()) &&
                         Objects.isNull(anUpdatedCategory.deletedAt())

@@ -39,7 +39,7 @@ class GetCategoryByIdUseCaseIT {
         final var expectedDescription = "A categoria mais assistida";
         final var expectedIsActive = true;
         final var aCategory = Category.newCategory(expectedName, expectedDescription, expectedIsActive);
-        final var expectedId = aCategory.id();
+        final var expectedId = aCategory.getId();
 
         this.save(aCategory);
 

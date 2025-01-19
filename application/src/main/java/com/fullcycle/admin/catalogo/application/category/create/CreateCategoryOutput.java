@@ -12,6 +12,6 @@ public record CreateCategoryOutput(
 
     public static CreateCategoryOutput from(
             final Category aCategory) {
-        return new CreateCategoryOutput(aCategory.id().getValue());
+        return new CreateCategoryOutput(aCategory.getId().getValue());
     }
 }

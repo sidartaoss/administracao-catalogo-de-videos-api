@@ -8,15 +8,15 @@ public interface ValidationHandler {
 
     ValidationHandler append(ValidationHandler handler);
 
-    ValidationHandler validate(Validation handler);
+    <T> T validate(Validation<T> handler);
 
     List<Error> getErrors();
 
-    default boolean hasErrors() {
+    default boolean hasError() {
         return getErrors() != null && !getErrors().isEmpty();
     }
 
-    interface Validation {
-        void validate();
+    interface Validation<T> {
+        T validate();
     }
 }

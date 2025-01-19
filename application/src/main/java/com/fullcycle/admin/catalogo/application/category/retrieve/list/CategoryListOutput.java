@@ -15,7 +15,7 @@ public record CategoryListOutput(
 ) {
     public static CategoryListOutput from(final Category aCategory) {
         return new CategoryListOutput(
-                aCategory.id(),
+                aCategory.getId(),
                 aCategory.name(),
                 aCategory.description(),
                 aCategory.active(),

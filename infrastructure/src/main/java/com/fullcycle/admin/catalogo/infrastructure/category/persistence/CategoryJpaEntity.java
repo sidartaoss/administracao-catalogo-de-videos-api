@@ -54,7 +54,7 @@ public class CategoryJpaEntity {
 
     public static CategoryJpaEntity from(final Category aCategory) {
         return new CategoryJpaEntity(
-                aCategory.id().getValue(),
+                aCategory.getId().getValue(),
                 aCategory.name(),
                 aCategory.description(),
                 aCategory.active(),

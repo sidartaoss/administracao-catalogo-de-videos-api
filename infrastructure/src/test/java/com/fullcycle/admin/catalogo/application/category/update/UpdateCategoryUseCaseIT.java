@@ -39,7 +39,7 @@ public class UpdateCategoryUseCaseIT {
         final var expectedIsActive = true;
 
         final var aCategory = Category.newCategory("film", null, true);
-        final var expectedId = aCategory.id();
+        final var expectedId = aCategory.getId();
 
         this.save(aCategory);
 
@@ -77,7 +77,7 @@ public class UpdateCategoryUseCaseIT {
     void givenAnInvalidName_whenCallsUpdateCategory_thenShouldReturnDomainException() {
         // Given
         final var aCategory = Category.newCategory("film", null, true);
-        final var expectedId = aCategory.id();
+        final var expectedId = aCategory.getId();
 
         this.save(aCategory);
 
@@ -109,7 +109,7 @@ public class UpdateCategoryUseCaseIT {
     void givenAValidCommandWithInactiveCategory_whenCallsUpdateCategory_thenShouldReturnInactiveCategoryId() {
         // Given
         final var aCategory = Category.newCategory("film", null, true);
-        final var expectedId = aCategory.id();
+        final var expectedId = aCategory.getId();
 
         this.save(aCategory);
 
@@ -154,7 +154,7 @@ public class UpdateCategoryUseCaseIT {
         final var expectedErrorMessage = "Gateway error.";
 
         final var aCategory = Category.newCategory(expectedName, expectedDescription, expectedIsActive);
-        final var expectedId = aCategory.id();
+        final var expectedId = aCategory.getId();
 
         this.save(aCategory);
 

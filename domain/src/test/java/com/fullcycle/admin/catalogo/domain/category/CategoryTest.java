@@ -1,12 +1,13 @@
 package com.fullcycle.admin.catalogo.domain.category;
 
+import com.fullcycle.admin.catalogo.domain.UnitTest;
 import com.fullcycle.admin.catalogo.domain.exceptions.DomainException;
 import com.fullcycle.admin.catalogo.domain.validation.handler.ThrowsValidationHandler;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CategoryTest {
+class CategoryTest extends UnitTest {
 
     @Test
     void givenAValidParams_whenCallNewCategory_thenInstantiateACategory() {
@@ -21,7 +22,7 @@ class CategoryTest {
 
         // Then
         assertNotNull(actualCategory);
-        assertNotNull(actualCategory.id());
+        assertNotNull(actualCategory.getId());
         assertEquals(expectedName, actualCategory.name());
         assertEquals(expectedDescription, actualCategory.description());
         assertEquals(expectedIsActive, actualCategory.active());
@@ -44,8 +45,8 @@ class CategoryTest {
 
         // Then
         final var actualException = assertThrows(DomainException.class, () -> actualCategory.validate(new ThrowsValidationHandler()));
-        assertEquals(expectedErrorCount, actualException.errors().size());
-        assertEquals(expectedErrorMessage, actualException.errors().get(0).message());
+        assertEquals(expectedErrorCount, actualException.getErrors().size());
+        assertEquals(expectedErrorMessage, actualException.getErrors().get(0).message());
     }
 
     @Test
@@ -64,8 +65,8 @@ class CategoryTest {
         // Then
         final var actualException = assertThrows(DomainException.class, () -> actualCategory.validate(
                 new ThrowsValidationHandler()));
-        assertEquals(expectedErrorCount, actualException.errors().size());
-        assertEquals(expectedErrorMessage, actualException.errors().get(0).message());
+        assertEquals(expectedErrorCount, actualException.getErrors().size());
+        assertEquals(expectedErrorMessage, actualException.getErrors().get(0).message());
     }
 
     @Test
@@ -84,8 +85,8 @@ class CategoryTest {
         // Then
         final var actualException = assertThrows(DomainException.class, () -> actualCategory.validate(
                 new ThrowsValidationHandler()));
-        assertEquals(expectedErrorCount, actualException.errors().size());
-        assertEquals(expectedErrorMessage, actualException.errors().get(0).message());
+        assertEquals(expectedErrorCount, actualException.getErrors().size());
+        assertEquals(expectedErrorMessage, actualException.getErrors().get(0).message());
     }
 
     @Test
@@ -107,8 +108,8 @@ class CategoryTest {
         // Then
         final var actualException = assertThrows(DomainException.class, () -> actualCategory.validate(
                 new ThrowsValidationHandler()));
-        assertEquals(expectedErrorCount, actualException.errors().size());
-        assertEquals(expectedErrorMessage, actualException.errors().get(0).message());
+        assertEquals(expectedErrorCount, actualException.getErrors().size());
+        assertEquals(expectedErrorMessage, actualException.getErrors().get(0).message());
     }
 
     @Test
@@ -125,7 +126,7 @@ class CategoryTest {
         // Then
         assertDoesNotThrow(() -> actualCategory.validate(new ThrowsValidationHandler()));
         assertNotNull(actualCategory);
-        assertNotNull(actualCategory.id());
+        assertNotNull(actualCategory.getId());
         assertEquals(expectedName, actualCategory.name());
         assertEquals(expectedDescription, actualCategory.description());
         assertEquals(expectedIsActive, actualCategory.active());
@@ -147,7 +148,7 @@ class CategoryTest {
         // Then
         assertDoesNotThrow(() -> actualCategory.validate(new ThrowsValidationHandler()));
         assertNotNull(actualCategory);
-        assertNotNull(actualCategory.id());
+        assertNotNull(actualCategory.getId());
         assertEquals(expectedName, actualCategory.name());
         assertEquals(expectedDescription, actualCategory.description());
         assertEquals(expectedIsActive, actualCategory.active());
@@ -178,7 +179,7 @@ class CategoryTest {
 
         assertDoesNotThrow(() -> aCategory.validate(new ThrowsValidationHandler()));
 
-        assertEquals(aCategory.id(), actualCategory.id());
+        assertEquals(aCategory.getId(), actualCategory.getId());
         assertEquals(expectedName, actualCategory.name());
         assertEquals(expectedDescription, actualCategory.description());
         assertEquals(expectedIsActive, actualCategory.active());
@@ -212,7 +213,7 @@ class CategoryTest {
 
         assertDoesNotThrow(() -> aCategory.validate(new ThrowsValidationHandler()));
 
-        assertEquals(aCategory.id(), actualCategory.id());
+        assertEquals(aCategory.getId(), actualCategory.getId());
         assertEquals(expectedName, actualCategory.name());
         assertEquals(expectedDescription, actualCategory.description());
         assertEquals(expectedIsActive, actualCategory.active());
@@ -243,7 +244,7 @@ class CategoryTest {
         // Then
         assertDoesNotThrow(() -> aCategory.validate(new ThrowsValidationHandler()));
 
-        assertEquals(aCategory.id(), actualCategory.id());
+        assertEquals(aCategory.getId(), actualCategory.getId());
         assertEquals(expectedName, actualCategory.name());
         assertEquals(expectedDescription, actualCategory.description());
         assertEquals(expectedIsActive, actualCategory.active());
@@ -277,7 +278,7 @@ class CategoryTest {
         // Then
         assertDoesNotThrow(() -> aCategory.validate(new ThrowsValidationHandler()));
 
-        assertEquals(aCategory.id(), actualCategory.id());
+        assertEquals(aCategory.getId(), actualCategory.getId());
         assertEquals(expectedName, actualCategory.name());
         assertEquals(expectedDescription, actualCategory.description());
         assertFalse(aCategory.active());
@@ -307,7 +308,7 @@ class CategoryTest {
         final var actualCategory = aCategory.update(expectedName, expectedDescription, expectedIsActive);
 
         // Then
-        assertEquals(aCategory.id(), actualCategory.id());
+        assertEquals(aCategory.getId(), actualCategory.getId());
         assertEquals(expectedName, actualCategory.name());
         assertEquals(expectedDescription, actualCategory.description());
         assertNull(aCategory.deletedAt());

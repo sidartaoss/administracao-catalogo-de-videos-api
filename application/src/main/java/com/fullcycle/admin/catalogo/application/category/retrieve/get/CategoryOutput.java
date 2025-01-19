@@ -18,7 +18,7 @@ public record CategoryOutput(
             final Category aCategory
     ) {
         return new CategoryOutput(
-                aCategory.id(),
+                aCategory.getId(),
                 aCategory.name(),
                 aCategory.description(),
                 aCategory.active(),
