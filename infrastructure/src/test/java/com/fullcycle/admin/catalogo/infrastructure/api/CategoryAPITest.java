@@ -1,6 +1,7 @@
 package com.fullcycle.admin.catalogo.infrastructure.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fullcycle.admin.catalogo.ApiTest;
 import com.fullcycle.admin.catalogo.ControllerTest;
 import com.fullcycle.admin.catalogo.application.category.create.CreateCategoryOutput;
 import com.fullcycle.admin.catalogo.application.category.create.CreateCategoryUseCase;
@@ -29,6 +30,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.List;
 import java.util.Objects;
 
+import static com.fullcycle.admin.catalogo.ApiTest.CATEGORIES_JWT;
 import static io.vavr.API.Left;
 import static io.vavr.API.Right;
 import static org.hamcrest.Matchers.*;
@@ -75,6 +77,7 @@ class CategoryAPITest {
                 .thenReturn(Right(new CreateCategoryOutput("123")));
 
         final var request = post("/categories")
+                .with(CATEGORIES_JWT)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(this.mapper.writeValueAsString(aCreateCategoryRequest))
                 .accept(MediaType.APPLICATION_JSON);
@@ -111,6 +114,7 @@ class CategoryAPITest {
                 .thenReturn(Left(Notification.create(new Error(expectedErrorMessage))));
 
         final var request = post("/categories")
+                .with(CATEGORIES_JWT)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(this.mapper.writeValueAsString(aCreateCategoryRequest))
                 .accept(MediaType.APPLICATION_JSON);
@@ -147,6 +151,7 @@ class CategoryAPITest {
                 .thenThrow(DomainException.with(new Error(expectedErrorMessage)));
 
         final var request = post("/categories")
+                .with(CATEGORIES_JWT)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(this.mapper.writeValueAsString(aCreateCategoryRequest))
                 .accept(MediaType.APPLICATION_JSON);
@@ -181,6 +186,7 @@ class CategoryAPITest {
                 .thenReturn(CategoryOutput.from(aCategory));
 
         final var request = get("/categories/{id}", expectedId)
+                .with(CATEGORIES_JWT)
                 .accept(MediaType.APPLICATION_JSON);
 
         // When
@@ -210,6 +216,7 @@ class CategoryAPITest {
                 .thenThrow(NotFoundException.with(Category.class, expectedId));
 
         final var request = get("/categories/{id}", expectedId.getValue())
+                .with(CATEGORIES_JWT)
                 .accept(MediaType.APPLICATION_JSON);
 
         // When
@@ -237,6 +244,7 @@ class CategoryAPITest {
         final var updateCategoryRequest = new UpdateCategoryRequest(expectedName, expectedDescription, expectedIsActive);
 
         final var request = put("/categories/{id}", expectedId)
+                .with(CATEGORIES_JWT)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .content(this.mapper.writeValueAsString(updateCategoryRequest));
@@ -275,6 +283,7 @@ class CategoryAPITest {
         final var updateCategoryRequest = new UpdateCategoryRequest(expectedName, expectedDescription, expectedIsActive);
 
         final var request = put("/categories/{id}", expectedId)
+                .with(CATEGORIES_JWT)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .content(this.mapper.writeValueAsString(updateCategoryRequest));
@@ -313,6 +322,7 @@ class CategoryAPITest {
         final var updateCategoryRequest = new UpdateCategoryRequest(expectedName, expectedDescription, expectedIsActive);
 
         final var request = put("/categories/{id}", expectedId)
+                .with(CATEGORIES_JWT)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .content(this.mapper.writeValueAsString(updateCategoryRequest));
@@ -343,6 +353,7 @@ class CategoryAPITest {
                 .when(this.deleteCategoryUseCase).execute(any());
 
         final var request = delete("/categories/{id}", expectedId)
+                .with(CATEGORIES_JWT)
                 .accept(MediaType.APPLICATION_JSON);
 
         // When
@@ -364,6 +375,7 @@ class CategoryAPITest {
                 .when(this.deleteCategoryUseCase).execute(any());
 
         final var request = delete("/categories/{id}", expectedId)
+                .with(CATEGORIES_JWT)
                 .accept(MediaType.APPLICATION_JSON);
 
         // When
@@ -377,7 +389,7 @@ class CategoryAPITest {
     }
 
     @Test
-    public void givenValidParams_whenCallsListCategories_shouldReturnCategories() throws Exception {
+    void givenValidParams_whenCallsListCategories_shouldReturnCategories() throws Exception {
         // Given
         final var aCategory = Category.newCategory("Movies", null, true);
 
@@ -396,6 +408,7 @@ class CategoryAPITest {
 
         // When
         final var request = get("/categories")
+                .with(CATEGORIES_JWT)
                 .queryParam("page", String.valueOf(expectedPage))
                 .queryParam("perPage", String.valueOf(expectedPerPage))
                 .queryParam("sort", expectedSort)
