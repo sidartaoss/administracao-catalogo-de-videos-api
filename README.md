@@ -2,9 +2,9 @@
 
 Propósito:
 -
-Esta aplicação serve como um backend de gerenciamento para as funcionalidades de categorias de vídeo, gêneros, elenco e vídeos.
+Servir como um backend de gerenciamento para as funcionalidades de categorias de vídeo, gêneros, elenco e vídeos.
 
-É uma aplicação Spring Boot que interage por meio de uma API REST com um banco de dados MySQL para executar operações CRUD; além de ser responsável pelo download e upload de mídias de vídeo e imagem. 
+Aplicação Spring Boot que interage por meio de uma API REST com um banco de dados MySQL para executar operações CRUD; além de ser responsável pelo download e upload de mídias de vídeo e imagem. 
 
 A aplicação também utiliza o RabbitMQ para mensageria, particularmente para escutar eventos de codificação de vídeo a partir de um microsserviço codificador (encoder) de vídeos e para publicar eventos de domínio relacionados à criação e atualização de mídias de vídeo.
 
