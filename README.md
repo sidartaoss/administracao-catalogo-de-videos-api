@@ -27,5 +27,5 @@ Tecnologias envolvidas:
   
 ![Upload to Google Cloud Storage](media/VIDEO.webm)
 
-### Referência
+#### Referência
 CURSO FULL CYCLE 3.0. Projeto prático - Java (Back-end). 2025. Disponível em: https://plataforma.fullcycle.com.br. Acesso em: 20 jan. 2025.
