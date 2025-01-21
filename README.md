@@ -2,9 +2,9 @@
 
 Propósito:
 -
-Esta aplicação serve como um backend de gerenciamento para as funcionalidades de categorias de vídeo, gêneros, elenco e vídeos.
+Servir como um backend de gerenciamento para as funcionalidades de categorias de vídeo, gêneros, elenco e vídeos.
 
-É uma aplicação Spring Boot que interage por meio de uma API REST com um banco de dados MySQL para executar operações CRUD; além de ser responsável pelo download e upload de mídias de vídeo e imagem. 
+A aplicação permite o cadastro de vídeos, categorias e usuários, além de permitir a associação de vídeos com categorias. A aplicação também permite o upload de vídeos para o Google Cloud Storage.
 
 A aplicação também utiliza o RabbitMQ para mensageria, particularmente para escutar eventos de codificação de vídeo a partir de um microsserviço codificador (encoder) de vídeos e para publicar eventos de domínio relacionados à criação e atualização de mídias de vídeo.
 
@@ -26,3 +26,6 @@ Tecnologias envolvidas:
 - Google Cloud Storage
   
 ![Upload to Google Cloud Storage](media/VIDEO.webm)
+
+#### Referência
+CURSO FULL CYCLE 3.0. Projeto prático - Java (Back-end). 2025. Disponível em: https://plataforma.fullcycle.com.br. Acesso em: 20 jan. 2025.
