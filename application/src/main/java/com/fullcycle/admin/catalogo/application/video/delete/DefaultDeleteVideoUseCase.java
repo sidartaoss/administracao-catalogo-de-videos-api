@@ -1,6 +1,6 @@
 package com.fullcycle.admin.catalogo.application.video.delete;
 
-import com.fullcycle.admin.catalogo.domain.MediaResourceGateway;
+import com.fullcycle.admin.catalogo.domain.video.MediaResourceGateway;
 import com.fullcycle.admin.catalogo.domain.video.VideoGateway;
 import com.fullcycle.admin.catalogo.domain.video.VideoID;
 

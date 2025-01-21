@@ -1,7 +1,7 @@
 package com.fullcycle.admin.catalogo.application.video.create;
 
 import com.fullcycle.admin.catalogo.domain.Identifier;
-import com.fullcycle.admin.catalogo.domain.MediaResourceGateway;
+import com.fullcycle.admin.catalogo.domain.video.MediaResourceGateway;
 import com.fullcycle.admin.catalogo.domain.video.VideoResource;
 import com.fullcycle.admin.catalogo.domain.castmember.CastMemberGateway;
 import com.fullcycle.admin.catalogo.domain.castmember.CastMemberID;

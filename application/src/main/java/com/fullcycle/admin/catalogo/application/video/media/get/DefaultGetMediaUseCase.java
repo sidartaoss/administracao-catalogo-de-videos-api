@@ -1,6 +1,6 @@
 package com.fullcycle.admin.catalogo.application.video.media.get;
 
-import com.fullcycle.admin.catalogo.domain.MediaResourceGateway;
+import com.fullcycle.admin.catalogo.domain.video.MediaResourceGateway;
 import com.fullcycle.admin.catalogo.domain.exceptions.NotFoundException;
 import com.fullcycle.admin.catalogo.domain.validation.Error;
 import com.fullcycle.admin.catalogo.domain.video.VideoID;

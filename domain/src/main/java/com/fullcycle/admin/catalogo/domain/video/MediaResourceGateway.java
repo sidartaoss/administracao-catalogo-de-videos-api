@@ -1,7 +1,6 @@
-package com.fullcycle.admin.catalogo.domain;
+package com.fullcycle.admin.catalogo.domain.video;
 
 import com.fullcycle.admin.catalogo.domain.resource.Resource;
-import com.fullcycle.admin.catalogo.domain.video.*;
 
 import java.util.Optional;
 

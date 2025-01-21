@@ -16,7 +16,7 @@ import com.fullcycle.admin.catalogo.application.video.retrieve.list.DefaultListV
 import com.fullcycle.admin.catalogo.application.video.retrieve.list.ListVideosUseCase;
 import com.fullcycle.admin.catalogo.application.video.update.DefaultUpdateVideoUseCase;
 import com.fullcycle.admin.catalogo.application.video.update.UpdateVideoUseCase;
-import com.fullcycle.admin.catalogo.domain.MediaResourceGateway;
+import com.fullcycle.admin.catalogo.domain.video.MediaResourceGateway;
 import com.fullcycle.admin.catalogo.domain.castmember.CastMemberGateway;
 import com.fullcycle.admin.catalogo.domain.category.CategoryGateway;
 import com.fullcycle.admin.catalogo.domain.genre.GenreGateway;
